@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Address Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top left, purple, transparent 50%), 
+            radial-gradient(circle at top right, green, transparent 50%), 
+            radial-gradient(circle at bottom left, yellow, transparent 50%), 
+            radial-gradient(circle at bottom right, skyblue, transparent 50%), 
+            white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: linear-gradient(to bottom right, skyblue, white 50%, pink);
+      width: 100%;
+      max-width: 420px;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    .item {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #34495e;
+    }
+
+    .btn-group {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .back-btn {
+      background: #7f8c8d;
+      color: white;
+    }
+
+    .map-btn {
+      background: #2980b9;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h2>Address Details</h2>
+
+    <div class="item"><span class="label">Address:</span> <span id="address"></span></div>
+    <div class="item"><span class="label">City:</span> <span id="city"></span></div>
+    <div class="item"><span class="label">Pincode:</span> <span id="pincode"></span></div>
+
+    <div class="btn-group">
+      <button class="back-btn" onclick="goBack()">Back</button>
+      <button class="map-btn" onclick="openMap()">Open in Map</button>
+    </div>
+  </div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+
+  const address = params.get("address");
+  const city = params.get("city");
+  const pincode = params.get("pincode");
+
+  document.getElementById("address").textContent = address || "-";
+  document.getElementById("city").textContent = city || "-";
+  document.getElementById("pincode").textContent = pincode || "-";
+
+  function goBack() {
+    window.history.back();
+  }
+
+  function openMap() {
+    const query = encodeURIComponent(address + " " + city + " " + pincode);
+    window.open("https://www.google.com/maps/search/?api=1&query=" + query, "_blank");
+  }
+</script>
+
+</body>
+</html>

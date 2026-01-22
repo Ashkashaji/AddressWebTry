@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Smart Address Finder</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top left, purple, transparent 50%), 
+            radial-gradient(circle at top right, green, transparent 50%), 
+            radial-gradient(circle at bottom left, yellow, transparent 50%), 
+            radial-gradient(circle at bottom right, skyblue, transparent 50%), 
+            white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-msg {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.login-msg h1 {
+  color: #180067;   /* Dark Blue */
+  margin-bottom: 5px;
+}
+
+.login-msg h2 {
+  color: rgb(10, 34, 118);     /* White */
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.login-container {
+  .login-container {
+  background: linear-gradient(to bottom right, skyblue, white 50%, pink);
+}
+  padding: 35px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 0 25px rgba(255,0,0,0.2);
+  text-align: center;
+}
+
+h1 {
+  color: rgb(240, 9, 36);
+  margin-bottom: 10px;
+}
+
+p {
+  color: rgb(0, 102, 9);
+  margin-bottom: 20px;
+}
+
+input {
+  width: 95%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #180067;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ee5473;
+}
+
+.small {
+  font-size: 13px;
+  margin-top: 12px;
+  color: #f1f1f1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <div class="login-msg">
+    <h1>LOOKing FOr An ADDRess...🤔</h1>
+    <h1>You're in the right place 😜</h1>
+  </div><center><h1>Log In 🔐</h1>
+  <p>Smart Address Finder</p></center>
+
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <div class="small">Demo login — no real authentication</div>
+</div>
+
+<script>
+function login(){
+  // demo only
+  window.location.href = "index.html"; // your address search page
+}
+</script>
+
+</body>
+</html>

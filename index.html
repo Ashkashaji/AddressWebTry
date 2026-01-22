@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Address Search</title>
+
+<style>
+
+.logout-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(to bottom right, skyblue, white 50%, pink);
+  color: rgb(255, 44, 44);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 1000;
+  
+}
+
+.logout-btn:hover {
+  background: #d1a6ae;
+}
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top left,skyblue, transparent 50%), 
+            radial-gradient(circle at top right,yellow, transparent 50%), 
+            radial-gradient(circle at bottom left, green, transparent 50%), 
+            radial-gradient(circle at bottom right,purple, transparent 50%), 
+            white;
+    color: rgb(135, 65, 65);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 180px;
+    
+  }
+
+  .page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  .top-info {
+    text-align: center;
+    color: rgb(8, 33, 145);
+    margin-bottom: 15px;
+    padding: 0 15px;
+  }
+
+  .top-info h2 {
+    margin: 5px 0;
+  }
+
+  .top-info p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  
+  .container {
+    .login-container {
+  background: linear-gradient(to bottom right, skyblue, white 50%, pink);
+}
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 25px rgba(255,0,0,0.2);
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: rgb(7, 1, 101);
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #1f1fcd;
+  }
+
+  input {
+    width: 95%;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    background: #180067;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #ee5473;
+  }
+
+  .results {
+    margin-top: 15px;
+  }
+
+  .item {
+    background: #1f1f1f;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .footer {
+    margin-top: 80px;
+    text-align: center;
+    color: rgb(125, 7, 93);
+    font-size: 13px;
+    padding: 0 15px;
+  }
+
+  .footer h3 {
+    margin-bottom: 5px;
+    margin-top: 50px;
+  }
+</style>
+</head>
+
+<body>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+
+<div class="page">
+
+
+  <div class="top-info">
+    <h2>Smart Address Finder</h2>
+    <p>Quickly search and verify Australian addresses using smart search technology.</p>
+  </div>
+
+  <div class="container">
+    <h1>Address Search 🌏</h1>
+    <p class="subtitle">Search Australian addresses</p>
+
+    <input id="searchBox" placeholder="Type any address...">
+    <button onclick="goToThirdPage()">Search</button>
+
+    <div id="results" class="results"></div>
+  </div>
+
+  <div class="footer">
+    <h3>About Us</h3>
+    <p>
+      We provide fast and accurate address search solutions for Australian locations.
+      This project is built as part of a web development internship.
+    </p>
+
+    <h3>Contact Us</h3>
+    <p>Email: ashka@addressfinder.com</p>
+    <p>Phone: +61 8129 3880</p>
+  </div>
+
+</div>
+
+<script>
+  
+function searchAddress() {
+  const query = document.getElementById("searchBox").value;
+  const resultsDiv = document.getElementById("results");
+
+  resultsDiv.innerHTML = "";
+
+  if(query === ""){
+    resultsDiv.innerHTML = "<p style='color:red'>Please enter address</p>";
+    return;
+  }
+
+  // Dummy result (for now)
+  const dummyResults = [
+    query + ", Australia",
+    query + " - Nearby Location",
+    query + " - Verified Address"
+  ];
+
+  dummyResults.forEach(addr => {
+    const div = document.createElement("div");
+    div.className = "item";
+    div.innerText = addr;
+    resultsDiv.appendChild(div);
+  });
+}
+function logout(){
+  window.location.href = "login.html";
+}
+function goToThirdPage() {
+  const query = document.getElementById("searchBox").value;
+
+  if(query === ""){
+    alert("Please enter address");
+    return;
+  }
+
+  window.location.href =
+    `search.html?address=${encodeURIComponent(query)}&city=Australia&pincode=000000`;
+}
+</script>
+
+</body>
+</html>
